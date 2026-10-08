@@ -270,48 +270,6 @@ footer p{font-size:.9rem;opacity:.8;margin-top:.5rem}
   <p>© 2026 HeroCon, Convención de Superhéroes. Todos los héroes son ficticios.</p>
 </footer>
 
-<script>
-/* ============================================================
-   PEGA AQUÍ LA URL DE TU API GATEWAY (ruta POST), por ejemplo:
-   https://abc123.execute-api.us-east-1.amazonaws.com/prod/registro
-   ============================================================ */
-const API_URL = "PEGA_AQUI_TU_ENDPOINT_DE_API_GATEWAY";
-
-const form = document.getElementById("form");
-const btn = document.getElementById("btn");
-const msg = document.getElementById("msg");
-
-function show(type, text){ msg.className = type; msg.textContent = text; }
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const nombre = form.nombre.value.trim();
-  const email = form.email.value.trim();
-
-  if (nombre.length < 2) return show("err", "Escribe tu nombre (mínimo 2 letras).");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show("err", "Revisa tu email: parece que no es válido.");
-  if (API_URL.startsWith("PEGA_AQUI")) return show("err", "Falta configurar la URL de la API en el código (API_URL).");
-
-  btn.disabled = true;
-  btn.textContent = "Enviando...";
-  msg.className = "";
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, email })
-    });
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    show("ok", "¡Registro completado, " + nombre + "! Te esperamos en HeroCon.");
-    form.reset();
-  } catch (err) {
-    show("err", "No hemos podido registrarte. Inténtalo de nuevo en unos minutos.");
-    console.error(err);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "¡Apúntame!";
-  }
-});
-</script>
+<script src="js/api.js"></script>
 </body>
 </html>
