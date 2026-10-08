@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="HeroCon 2026: la gran convención de superhéroes. Regístrate y asegura tu plaza.">
+<title>HeroCon 2026 | Convención de Superhéroes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16133b; --paper:#fff6dc; --yellow:#ffd60a; --red:#e8283c; --cyan:#12b5e5; --violet:#6b3fd4;
+  --display:'Bangers','Impact',sans-serif; --body:'Nunito','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.03em;line-height:1}
+.halftone{background-image:radial-gradient(rgba(22,19,59,.18) 20%,transparent 21%);background-size:14px 14px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:5px solid var(--yellow)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.7rem;padding-bottom:.7rem}
+.logo{font-family:var(--display);font-size:1.8rem;color:var(--yellow);text-decoration:none;letter-spacing:.05em}
+.logo span{color:var(--red);-webkit-text-stroke:1px var(--paper)}
+nav ul{display:flex;gap:1.4rem;list-style:none}
+nav ul a{color:var(--paper);text-decoration:none;font-weight:900}
+nav ul a:hover{color:var(--yellow)}
+.btn{display:inline-block;font-family:var(--display);font-size:1.4rem;letter-spacing:.06em;text-decoration:none;color:var(--ink);background:var(--yellow);border:4px solid var(--ink);padding:.55rem 1.5rem;box-shadow:6px 6px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.btn.red{background:var(--red);color:#fff}
+nav .btn{font-size:1.1rem;padding:.3rem 1rem;border-color:var(--paper);box-shadow:4px 4px 0 var(--red)}
+
+/* Hero */
+.hero{position:relative;background:var(--violet);color:#fff;border-bottom:8px solid var(--ink);overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:-50%;z-index:-2;background:repeating-conic-gradient(from 0deg at 50% 50%,#7b4fe6 0 7deg,#5a30bd 7deg 14deg)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(22,19,59,.35) 22%,transparent 23%);background-size:16px 16px;mask-image:linear-gradient(to top,#000,transparent 65%);-webkit-mask-image:linear-gradient(to top,#000,transparent 65%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-top:4.5rem;padding-bottom:5rem}
+.tag{display:inline-block;background:var(--yellow);color:var(--ink);font-family:var(--display);font-size:1.3rem;padding:.2rem .9rem;border:3px solid var(--ink);transform:rotate(-3deg);box-shadow:4px 4px 0 var(--ink);margin-bottom:1.2rem}
+.hero h1{font-size:clamp(3.6rem,10vw,7.5rem);color:var(--yellow);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:7px 7px 0 var(--ink)}
+.hero h1 em{font-style:normal;color:#fff;display:block;font-size:.55em;text-shadow:5px 5px 0 var(--red)}
+.hero p.lead{font-size:1.2rem;font-weight:700;max-width:34ch;margin:1.6rem 0 2rem;text-shadow:0 2px 0 rgba(22,19,59,.6)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero .cta a.ghost{color:#fff;font-weight:900;text-decoration:underline;text-underline-offset:4px}
+.burst{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto;display:grid;place-items:center;animation:pop .8s cubic-bezier(.2,1.6,.4,1) both}
+.burst svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(8px 8px 0 var(--ink))}
+.burst div{position:relative;text-align:center;color:var(--ink);transform:rotate(-6deg)}
+.burst b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(3.4rem,9vw,5.6rem);color:var(--red);-webkit-text-stroke:2px var(--ink);line-height:.9}
+.burst span{font-family:var(--display);font-size:clamp(1.3rem,3.4vw,2rem)}
+@keyframes pop{from{transform:scale(.2) rotate(-25deg);opacity:0}to{transform:none;opacity:1}}
+
+/* Secciones */
+section{padding:5rem 0}
+.title{text-align:center;margin-bottom:3rem}
+.title h2{font-size:clamp(2.4rem,6vw,4rem);display:inline-block;background:var(--ink);color:var(--yellow);padding:.35rem 1.4rem;transform:rotate(-1.5deg);box-shadow:7px 7px 0 var(--red)}
+.title p{margin-top:1.4rem;font-weight:700;max-width:52ch;margin-inline:auto}
+
+.info{background:var(--yellow);border-bottom:8px solid var(--ink)}
+.info .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.panel{background:#fff;border:5px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:1.6rem;position:relative}
+.panel h3{font-size:2rem;color:var(--red);margin-bottom:.4rem}
+.panel .big{font-family:var(--display);font-size:2.6rem;line-height:1}
+.panel svg{width:46px;height:46px;margin-bottom:.8rem}
+
+/* Programa */
+.schedule .days{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.day{background:#fff;border:5px solid var(--ink);box-shadow:8px 8px 0 var(--cyan)}
+.day header{background:var(--ink);color:var(--yellow);padding:.8rem 1.2rem}
+.day header h3{font-size:2rem}
+.day header small{color:var(--paper);font-weight:700}
+.day ul{list-style:none;padding:1.2rem}
+.day li{padding:.65rem 0;border-bottom:3px dotted rgba(22,19,59,.25)}
+.day li:last-child{border:0}
+.day li b{display:block;font-family:var(--display);font-weight:400;font-size:1.25rem;color:var(--red)}
+
+/* Invitados */
+.guests{background:var(--cyan);border-block:8px solid var(--ink);position:relative}
+.guests .title h2{box-shadow:7px 7px 0 var(--yellow)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.hero-card{background:var(--paper);border:5px solid var(--ink);box-shadow:7px 7px 0 var(--ink);text-align:center;transition:transform .2s}
+.hero-card:hover{transform:rotate(-2deg) translateY(-6px)}
+.hero-card .pic{height:170px;display:grid;place-items:center;border-bottom:5px solid var(--ink)}
+.hero-card .pic svg{width:96px;height:96px;filter:drop-shadow(4px 4px 0 var(--ink))}
+.hero-card h3{font-size:1.6rem;margin-top:.8rem}
+.hero-card p{padding:.2rem 1rem 1.2rem;font-size:.95rem;font-weight:700}
+.hero-card .pic.a{background:var(--yellow)}.hero-card .pic.b{background:var(--red)}.hero-card .pic.c{background:var(--violet)}.hero-card .pic.d{background:#35d07f}
+
+/* Registro */
+.signup{background:var(--paper)}
+.signup .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.signup h2{font-size:clamp(2.6rem,6vw,4.4rem);color:var(--red);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink);margin-bottom:1rem}
+.signup .perks{list-style:none;margin-top:1.2rem}
+.signup .perks li{font-weight:800;padding:.3rem 0 .3rem 2rem;position:relative}
+.signup .perks li::before{content:"★";position:absolute;left:0;color:var(--red);font-size:1.2rem}
+form{background:#fff;border:5px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:2rem;position:relative}
+form::before{content:"¡ÚNETE!";position:absolute;top:-1.6rem;right:-.8rem;background:var(--yellow);border:4px solid var(--ink);font-family:var(--display);padding:.1rem .9rem;font-size:1.6rem;transform:rotate(5deg)}
+label{display:block;font-family:var(--display);font-size:1.3rem;letter-spacing:.05em;margin-bottom:.3rem}
+input{width:100%;font:inherit;font-weight:700;padding:.8rem 1rem;border:4px solid var(--ink);background:var(--paper);margin-bottom:1.3rem}
+input:focus{outline:none;border-color:var(--red);box-shadow:4px 4px 0 var(--red)}
+form .btn{width:100%;text-align:center}
+form .btn[disabled]{opacity:.6;cursor:wait}
+#msg{margin-top:1.2rem;padding:.9rem 1rem;border:4px solid var(--ink);font-weight:800;display:none}
+#msg.ok{display:block;background:#b6f2c8}
+#msg.err{display:block;background:#ffc4c9}
+
+footer{background:var(--ink);color:var(--paper);text-align:center;padding:2.5rem 1rem;border-top:8px solid var(--yellow)}
+footer .logo{font-size:2.2rem}
+footer p{font-size:.9rem;opacity:.8;margin-top:.5rem}
+
+@media (max-width:900px){
+  nav ul{display:none}
+  .hero .wrap,.signup .wrap{grid-template-columns:1fr}
+  .info .grid,.schedule .days{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .burst{max-width:300px}
+}
+@media (max-width:520px){ .cards{grid-template-columns:1fr} section{padding:3.5rem 0} }
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio">HERO<span>CON</span></a>
+    <ul>
+      <li><a href="#info">Evento</a></li>
+      <li><a href="#programa">Programa</a></li>
+      <li><a href="#invitados">Invitados</a></li>
+    </ul>
+    <a class="btn" href="#registro">Regístrate</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="tag">¡La convención del año!</span>
+      <h1>HeroCon <em>Convención de Superhéroes 2026</em></h1>
+      <p class="lead">Tres días de cómics, disfraces, estrenos y encuentros con los héroes que te hicieron soñar.</p>
+      <div class="cta">
+        <a class="btn red" href="#registro">¡Quiero mi plaza!</a>
+        <a class="ghost" href="#programa">Ver el programa</a>
+      </div>
+    </div>
+    <div class="burst" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><polygon fill="#ffd60a" stroke="#16133b" stroke-width="5" stroke-linejoin="round" points="100,4 119,38 156,16 156,57 196,62 172,95 200,122 162,138 175,178 134,170 124,200 100,172 76,200 66,170 25,178 38,138 0,122 28,95 4,62 44,57 44,16 81,38"/></svg>
+      <div><b>¡POW!</b><span>14 · 15 · 16 NOV</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="info" id="info">
+  <div class="wrap">
+    <div class="title"><h2>Todo lo que necesitas saber</h2></div>
+    <div class="grid">
+      <article class="panel">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#16133b" stroke-width="4" stroke-linejoin="round"><rect x="6" y="10" width="36" height="32" fill="#12b5e5"/><path d="M6 20h36M16 4v10M32 4v10"/></svg>
+        <h3>Cuándo</h3>
+        <p class="big">14 al 16 de noviembre</p>
+        <p>Viernes, sábado y domingo. Puertas abiertas de 10:00 a 21:00.</p>
+      </article>
+      <article class="panel">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#16133b" stroke-width="4" stroke-linejoin="round"><path d="M24 44S8 28 8 18a16 16 0 0 1 32 0c0 10-16 26-16 26z" fill="#e8283c"/><circle cx="24" cy="18" r="6" fill="#fff6dc"/></svg>
+        <h3>Dónde</h3>
+        <p class="big">Pabellón Central</p>
+        <p>Ciudad Heroica. Zona de cosplay, tienda oficial y escenario principal.</p>
+      </article>
+      <article class="panel">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#16133b" stroke-width="4" stroke-linejoin="round"><path d="M4 16h40v6a4 4 0 0 0 0 8v6H4v-6a4 4 0 0 0 0-8z" fill="#ffd60a"/><path d="M30 16v20" stroke-dasharray="3 4"/></svg>
+        <h3>Entrada</h3>
+        <p class="big">Gratis con registro</p>
+        <p>Plazas limitadas. Apúntate y te avisamos por email cuando se confirme tu plaza.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="programa">
+  <div class="wrap">
+    <div class="title">
+      <h2>El programa</h2>
+      <p>Charlas, concursos y estrenos. Elige tu día o vive los tres.</p>
+    </div>
+    <div class="days">
+      <article class="day">
+        <header><h3>Viernes</h3><small>Día de los orígenes</small></header>
+        <ul>
+          <li><b>10:30</b>Apertura y desfile de bienvenida</li>
+          <li><b>12:00</b>Taller: dibuja tu primer héroe</li>
+          <li><b>17:00</b>Mesa redonda: villanos que nos encantan</li>
+          <li><b>20:00</b>Proyección de cine retro de capas</li>
+        </ul>
+      </article>
+      <article class="day">
+        <header><h3>Sábado</h3><small>Día del cosplay</small></header>
+        <ul>
+          <li><b>11:00</b>Taller de maquillaje y armaduras</li>
+          <li><b>13:00</b>Firmas de autores de cómic</li>
+          <li><b>17:30</b>Gran concurso de cosplay</li>
+          <li><b>20:30</b>Fiesta de los superpoderes</li>
+        </ul>
+      </article>
+      <article class="day">
+        <header><h3>Domingo</h3><small>Día de la gran batalla</small></header>
+        <ul>
+          <li><b>11:00</b>Torneo de juegos de mesa heroicos</li>
+          <li><b>14:00</b>Presentación de nuevos cómics</li>
+          <li><b>18:00</b>Batalla final en el escenario</li>
+          <li><b>20:00</b>Entrega de premios y cierre</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="guests" id="invitados">
+  <div class="wrap">
+    <div class="title"><h2>Invitados estelares</h2></div>
+    <div class="cards">
+      <article class="hero-card">
+        <div class="pic a"><svg viewBox="0 0 48 48" fill="#e8283c" stroke="#16133b" stroke-width="3" stroke-linejoin="round"><path d="M28 2 8 26h12l-4 20 24-26H28z"/></svg></div>
+        <h3>Capitán Voltio</h3><p>Maestro de la electricidad. Firma autógrafos sin cortocircuitos.</p>
+      </article>
+      <article class="hero-card">
+        <div class="pic b"><svg viewBox="0 0 48 48" fill="#fff6dc" stroke="#16133b" stroke-width="3" stroke-linejoin="round"><path d="M14 34a9 9 0 0 1-1-18 11 11 0 0 1 21 2 8 8 0 0 1-1 16z"/><path d="m24 34-4 10 8-12h-4z" fill="#ffd60a"/></svg></div>
+        <h3>Doña Tormenta</h3><p>Controla el clima. Trae paraguas a su charla.</p>
+      </article>
+      <article class="hero-card">
+        <div class="pic c"><svg viewBox="0 0 48 48" fill="#12b5e5" stroke="#16133b" stroke-width="3" stroke-linejoin="round"><path d="M4 22c6-10 14-14 20-14s14 4 20 14c-6 10-14 14-20 14S10 32 4 22z"/><circle cx="24" cy="22" r="7" fill="#16133b"/><circle cx="22" cy="20" r="2" fill="#fff"/></svg></div>
+        <h3>Sombra Neón</h3><p>Aparece y desaparece. Llega puntual, aunque no se la vea.</p>
+      </article>
+      <article class="hero-card">
+        <div class="pic d"><svg viewBox="0 0 48 48" fill="#ffd60a" stroke="#16133b" stroke-width="3" stroke-linejoin="round"><path d="M24 4 6 12v12c0 10 8 17 18 20 10-3 18-10 18-20V12z"/><path d="M24 14v20M16 22h16" stroke-width="4"/></svg></div>
+        <h3>Dra. Quark</h3><p>Científica y heroína. Demostraciones en directo con humo y chispas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="signup halftone" id="registro">
+  <div class="wrap">
+    <div>
+      <h2>¡Reserva tu plaza!</h2>
+      <p>Regístrate con tu nombre y tu email. Recibirás la confirmación en tu bandeja de entrada.</p>
+      <ul class="perks">
+        <li>Acceso a los tres días</li>
+        <li>Pulsera exclusiva de HeroCon</li>
+        <li>Sorteo de cómics firmados</li>
+      </ul>
+    </div>
+    <form id="form" novalidate>
+      <label for="nombre">Tu nombre</label>
+      <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Nombre de héroe o heroína" required maxlength="80">
+      <label for="email">Tu email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required maxlength="120">
+      <button class="btn red" id="btn" type="submit">¡Apúntame!</button>
+      <p id="msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="#inicio">HEROCON</a>
+  <p>© 2026 HeroCon, Convención de Superhéroes. Todos los héroes son ficticios.</p>
+</footer>
+
+<script>
+/* ============================================================
+   PEGA AQUÍ LA URL DE TU API GATEWAY (ruta POST), por ejemplo:
+   https://abc123.execute-api.us-east-1.amazonaws.com/prod/registro
+   ============================================================ */
+const API_URL = "PEGA_AQUI_TU_ENDPOINT_DE_API_GATEWAY";
+
+const form = document.getElementById("form");
+const btn = document.getElementById("btn");
+const msg = document.getElementById("msg");
+
+function show(type, text){ msg.className = type; msg.textContent = text; }
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const nombre = form.nombre.value.trim();
+  const email = form.email.value.trim();
+
+  if (nombre.length < 2) return show("err", "Escribe tu nombre (mínimo 2 letras).");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show("err", "Revisa tu email: parece que no es válido.");
+  if (API_URL.startsWith("PEGA_AQUI")) return show("err", "Falta configurar la URL de la API en el código (API_URL).");
+
+  btn.disabled = true;
+  btn.textContent = "Enviando...";
+  msg.className = "";
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nombre, email })
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    show("ok", "¡Registro completado, " + nombre + "! Te esperamos en HeroCon.");
+    form.reset();
+  } catch (err) {
+    show("err", "No hemos podido registrarte. Inténtalo de nuevo en unos minutos.");
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "¡Apúntame!";
+  }
+});
+</script>
+</body>
+</html>
